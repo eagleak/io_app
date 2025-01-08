@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      io App - Add Task
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="secondary" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">io App - Add Task</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="input-container">
+    <!-- Task Name Input -->
+    <ion-item>
+      <ion-label position="stacked">Task Name</ion-label>
+      <ion-input placeholder="Enter the task name" [(ngModel)]="taskName"></ion-input>
+    </ion-item>
+
+    <!-- Task Priority Dropdown -->
+    <ion-item>
+      <ion-label position="stacked">Task Priority</ion-label>
+      <ion-select placeholder="Select Priority" [(ngModel)]="taskPriority">
+        <ion-select-option value="low">Low Priority</ion-select-option>
+        <ion-select-option value="high">High Priority</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Task Description Input -->
+    <ion-item>
+      <ion-label position="stacked">Task Description</ion-label>
+      <ion-textarea 
+        placeholder="Enter the task description"
+        [(ngModel)]="taskDescription"
+      ></ion-textarea>
+    </ion-item>
+
+    <!-- Save Task Button -->
+    <ion-button expand="block" color="primary" (click)="saveTask()">
+      Save Task
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,20 +1,67 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Welcome to io app - To-Do List Tracker
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" color="secondary" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Welcome to io app</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <strong>Ready to create a To-Do List?</strong>
+    <!-- Add Task Button -->
+    <ion-button expand="block" color="primary" (click)="navigateToAddTask()">
+      Add Task
+    </ion-button>
+  </div>
+
+  <!-- Debugging Output -->
+  <pre>{{ tasks | json }}</pre>
+
+  <!-- Task List -->
+  <div *ngIf="tasks.length > 0">
+    <ion-card *ngFor="let task of tasks">
+      <ion-card-header>
+        <ion-card-title>{{ task.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Description:</strong> {{ task.description }}</p>
+        <p><strong>Priority:</strong> {{ task.priority | titlecase }}</p>
+        <p>
+          <strong>Status:</strong> 
+          <span [style.color]="task.completed ? 'green' : 'red'">
+            {{ task.completed ? 'Completed' : 'Incomplete' }}
+          </span>
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Device Info Card -->
+  <ion-card *ngIf="showDeviceInfo">
+    <ion-card-header>
+      <ion-card-title>Device Information</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Model: {{ deviceInfo?.model || 'N/A' }}</p>
+      <p>Platform: {{ deviceInfo?.platform || 'N/A' }}</p>
+      <p>Version: {{ deviceInfo?.version || 'N/A' }}</p>
+      <p>Manufacturer: {{ deviceInfo?.manufacturer || 'N/A' }}</p>
+      <p>Is Virtual: {{ deviceInfo?.isVirtual ? 'Yes' : 'No' }}</p>
+      <p>Serial: {{ deviceInfo?.serial || 'N/A' }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Button at the bottom -->
+  <div class="button-container">
+    <ion-button expand="block" (click)="showDeviceInfo = !showDeviceInfo">
+      {{ showDeviceInfo ? 'Hide Device Info' : 'Show Device Info' }}
+    </ion-button>
   </div>
 </ion-content>

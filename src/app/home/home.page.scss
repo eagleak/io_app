@@ -25,3 +25,15 @@
 #container a {
   text-decoration: none;
 }
+
+#container ion-button {
+  width: 10%;
+  margin: 0 auto; // Centers the button horizontally
+}
+
+.button-container {
+  position: fixed;
+  bottom: 20px;
+  width: 5%;
+  text-align: center;
+}

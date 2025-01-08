@@ -9,5 +9,9 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
+  },  {
+    path: 'add-task',
+    loadComponent: () => import('./add-task/add-task.page').then( m => m.AddTaskPage)
   },
+
 ];
